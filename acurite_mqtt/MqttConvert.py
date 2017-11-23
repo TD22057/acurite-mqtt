@@ -54,8 +54,7 @@ class MqttConvert:
             topic = "%s/%s" % (self.topic_rssi, location)
             payload = {
                 "time" : data['time'],
-                # Input is 0->1, convert to 0->100
-                "rssi" : data['signal'] * 100,
+                "rssi" : data['signal'],
                 }
             messages.append((topic, json.dumps(payload)))
 

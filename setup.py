@@ -8,7 +8,7 @@ test_requirements = []
 
 setup(
     name='acurite-mqtt',
-    version='0.2.0',
+    version='0.2.1',
     description="Acurite bridge output to MQTT",
     long_description=readme,
     author="Ted Drain",
