@@ -3,11 +3,11 @@
 # MQTT conversion
 #
 #===========================================================================
+# pylint: disable=no-member
 import json
 import logging
 
 LOG = logging.getLogger(__name__)
-
 
 class MqttConvert:
     def __init__(self, mqtt_config, sensor_config):

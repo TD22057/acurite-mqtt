@@ -1,2 +1,3 @@
-# acurite-mqtt
-Acurite bridge output to MQTT 
+# Acurite-MQTT
+
+Acurite bridge output to MQTT

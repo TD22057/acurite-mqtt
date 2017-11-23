@@ -65,7 +65,7 @@ def main(mqtt_converter=None):
 
     # Turn off lower level flask and server debugging.
     app.logger.setLevel(max(logging.INFO, args.level))
-    wlog = logging.getLogger( 'werkzeug' )
+    wlog = logging.getLogger('werkzeug')
     wlog.setLevel(max(logging.WARNING, args.level))
 
     # Run the web server

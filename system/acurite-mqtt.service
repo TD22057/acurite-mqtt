@@ -1,0 +1,11 @@
+[Unit]
+Description=Acurite bridge to MQTT
+After=network.target
+
+[Service]
+Type=simple
+User=acurite
+ExecStart=/opt/acurite-mqtt/bin/acurite-mqtt.py --log /var/log
+
+[Install]
+WantedBy=multi-user.target
