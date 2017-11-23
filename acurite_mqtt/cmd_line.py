@@ -5,6 +5,7 @@
 #===========================================================================
 import argparse
 import logging
+import logging.handlers
 import sys
 import yaml
 
@@ -36,17 +37,19 @@ def main(mqtt_converter=None):
     with open(args.config_file) as f:
         config = yaml.load(f.read())
 
-    # Set up the logging level and output.
-    log_args = {
-        'level' : args.level,
-        'datefmt' : '%Y-%m-%d %H:%M:%S',
-        'format' : '%(asctime)s %(levelname)s %(module)s: %(message)s',
-        }
+    # Set up the logging level and output.  Use a watched file handler
+    # here so that the system log rotation will work properly.
     if args.log:
-        log_args['filename'] = args.log
-    logging.basicConfig(**log_args)
+        handler = logging.handlers.WatchedFileHandler(args.log)
+    else:
+        handler = logging.StreamHandler(sys.stdout)
+    formatter = logging.Formatter(
+        '%(asctime)s %(levelname)s: %(message)s', '%Y-%m-%d %H:%M:%S')
+    handler.setFormatter(formatter)
 
-    log = logging.getLogger(__name__)
+    log = logging.getLogger("acurite_mqtt")
+    log.addHandler(handler)
+    log.setLevel(args.level)
 
     # Create the MQTT converter w/ the config inputs.
     if not mqtt_converter:

@@ -7,7 +7,7 @@ requirements = open("requirements.txt").readlines()
 test_requirements = []
 
 setup(
-    name='Acurite-MQTT',
+    name='acurite-mqtt',
     version='0.1.0',
     description="Acurite bridge output to MQTT",
     long_description=readme,
