@@ -36,7 +36,7 @@ battery_map = {
 
 #------------------------------------------------------------------------
 converters = {
-    "tempf" : lambda i: {"temp" : float(i)},
+    "tempf" : lambda i: {"temperature" : float(i)},
     "battery" : lambda i: {"battery" : battery_map.get(i, None)},
     "baromin" : lambda i: {"pressure" : float(i)},
     "humidity" : lambda i: {"humidity" : float(i)},

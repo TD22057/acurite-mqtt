@@ -68,7 +68,7 @@ class MqttConvert:
                 }
             messages.append((topic, json.dumps(payload)))
 
-        if self.topic_temp and "temperature" in data:
+        if self.topic_temp and "temprature" in data:
             topic = "%s/%s" % (self.topic_temp, location)
             payload = {
                 "time" : data['time'],
