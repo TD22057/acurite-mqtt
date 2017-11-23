@@ -1,0 +1,60 @@
+
+# Port to listen on for posts.  Use 80 for regular HTTP or if you're
+# redirecting traffic using a bridge, use that port.
+http_port: 22041
+
+# Firmware revision to report to the bridge.
+firmware_rev: 224
+
+#----------------------------------------------------------------
+mqtt:
+  host: 127.0.0.1
+  port: 1883
+  username:
+  password:
+
+  # Message publishing options.
+  qos: 0
+  retain: 0
+
+  # MQTT topics to publish acurite data under.  The actual topic will
+  # be the input value with the sensor location string appended to it.
+  # So 'env/temp' becomes 'env/temp/living room'.
+  topic_battery: "power/battery"
+  topic_rssi: "radio"
+  topic_humidity: "env/humidity"
+  topic_temp: "env/temp"
+  topic_wind_speed: "env/wind/speed"
+  topic_wind_dir: "env/wind/direction"
+  topic_barometer: "env/barometer"
+  topic_rain: "env/rain"
+
+#----------------------------------------------------------------
+
+# Sensor locations.  Labels are used in the MQTT topics.  All temp
+# sensors report humidity even if they don't measure it.  Set
+# humidity: true for any sensor that actually has a humidity sensor -
+# othewrise it will be ignored.  The sensor name (numeric ID) field
+# can be found be setting the log level to INFO and watching what's
+# being posted (find the 'sensor' tag value).
+sensors:
+  - "00005125":
+      label: "Living Room"
+  - "00001948":
+      label: "Master Bedroom"
+  - "00009338":
+      label: "Kitchen"
+  - "00002717":
+      label: "Den"
+  - "00005450":
+      label: "Media Room"
+  - "00016039":
+      label: "Basement"
+  - "00008628":
+      label: "Guest Bedroom"
+  - "00009096":
+      label: "Lower Deck"
+      humidity: true
+  - "00006978":
+      label: "Crawl Space"
+      humidity: true
